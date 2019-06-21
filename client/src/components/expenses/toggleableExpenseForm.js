@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Form, Input, Container, Row, Col} from 'reactstrap';
+import './expenses.css';
 
 const ToggleableExpenseForm = () => {
     const[date, setDate] = useState('');
@@ -18,41 +19,50 @@ const ToggleableExpenseForm = () => {
                 +new expence 
             </Button>
         )
+
+    const handleValueChange = e => {
+        setValue(e.target.value)
+        //cacl vat and update vat value here
+    }
     return(
         <div>
             <h3> New expense </h3>
-            <Form onSubmit = {handleSubmit} > 
+            <Form onSubmit = {handleSubmit} >
                 <Container>
                     <Row> 
                         <Col sm={5}> 
                             <Input 
-                            style= {{border:'0', outline: '0', borderBottom: '1px solid #ccc'}}
                                 type='date' 
                                 name='date' 
                                 value= {date} 
-                                onChange = { e => setDate(e.target.value)}
+                                onChange = {e => setDate(e.target.value)}
                                 required 
                             />
                         </Col>
                         <Col sm= {5} > 
                             <Input 
-                            style= {{border:'0', outline: '0', borderBottom: '1px solid #ccc'}}
-                                name='value'  
-                                value= {value} 
-                                onChange = { e => setValue(e.target.value)}
+                                name='value'
+                                value={value}
+                                onChange = {handleValueChange}  
                                 placeholder='expense value'
                                 required 
                             />
                         </Col>
                         <Col sm={2} > 
-                            Calculated VAT: 20%
+                            <Input 
+                                type='number' 
+                                name='vat'
+                                id='vat'
+                                placeholder='calculated vat'
+                                disabled
+                                required 
+                            />
                         <hr />
                         </Col>
                     </Row>
                     <Row> 
                         <Col sm={12}> 
                             <Input 
-                            style= {{border:'0', outline: '0', borderBottom: '1px solid #ccc'}}
                                 type='textarea' 
                                 name='reason'  
                                 value= {reason} 
