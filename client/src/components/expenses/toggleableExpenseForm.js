@@ -14,15 +14,6 @@ const ToggleableExpenseForm = () => {
     const handleSubmit = e => {
         e.preventDefault();
     }
-    if(!isOpen)
-        return (
-            <Button 
-                id='addBtn'
-                onClick = {() => setIsOpen(true)} > 
-                <img src={require('./add_ic20.png')} alt='add icon'/> Add New 
-            </Button>
-        )
-
     const handleValueChange = e => {
         let value = e.target.value;
 
@@ -35,11 +26,19 @@ const ToggleableExpenseForm = () => {
         setVat(formatedVat);
 
     }
+    if(!isOpen)
+        return (
+            <Button 
+                id='newBtn'
+                onClick = {() => setIsOpen(true)} > 
+                <img src={require('./add_ic20.png')} alt='add icon'/> Add New 
+            </Button>
+        )
     return(
         <div>
             <h3> New expense </h3>
             <Form onSubmit = {handleSubmit} >
-                <Container>
+                
                     <Row> 
                         <Col sm={5}> 
                             <Input 
@@ -76,13 +75,12 @@ const ToggleableExpenseForm = () => {
                         </Col>
                     </Row>
                  
-                </Container>
                  
-                    <Button style= {{margin: '40px'}} > Save </Button>
+                    <Button color='success' id='addBtn' > Add </Button>
                     
             </Form>
             
-            <Button onClick = {() => setIsOpen(false)} > Cancel </Button>
+            <Button color='warning' onClick = {() => setIsOpen(false)} > Cancel </Button>
         </div>
     )
 

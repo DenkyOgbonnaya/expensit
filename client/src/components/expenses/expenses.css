@@ -3,7 +3,10 @@
     outline: 0;
     border-Bottom: 1px solid #ccc
 }
-#addBtn {
+#newBtn {
     border-radius: 15px;
     background: #8bc34a;
+}
+#addBtn {
+    margin: 20px;
 }
