@@ -1,12 +1,13 @@
 import React from 'react';
 import {Table} from 'reactstrap';
+import {calculateVat} from './helper';
 
 const ExpenseList = ({expenses}) => {
 
     return(
         <div> 
             <Table > 
-                <thead> 
+            <thead> 
                     <tr> 
                         <th> Date </th>
                         <th> Value </th>
@@ -20,7 +21,7 @@ const ExpenseList = ({expenses}) => {
                             <tr key={expense._id} > 
                                 <td> {expense.date} </td>
                                 <td> {expense.value} </td>
-                                <td> {expense.vat} </td>
+                                <td> {calculateVat(expense.value)} </td>
                                 <td> {expense.reason} </td>
                             </tr>
                         )

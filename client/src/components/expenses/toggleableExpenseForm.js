@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import {Button, Form, Input, Container, Row, Col} from 'reactstrap';
+import {calculateVat, formatInput} from './helper';
 import './expenses.css';
 
 const ToggleableExpenseForm = () => {
     const[date, setDate] = useState('');
     const[value, setValue] = useState('');
     const[reason, setReason] = useState('');
+    const[vat, setVat] = useState(0)
 
     const[isOpen, setIsOpen] = useState(false);
 
@@ -22,8 +24,16 @@ const ToggleableExpenseForm = () => {
         )
 
     const handleValueChange = e => {
-        setValue(e.target.value)
-        //cacl vat and update vat value here
+        let value = e.target.value;
+
+        //format number 100000 to 100,000
+        let formatedValue = formatInput(value);
+        setValue(formatedValue);
+
+        //calc and format vat
+        let formatedVat = formatInput(calculateVat(value).toString());
+        setVat(formatedVat);
+
     }
     return(
         <div>
@@ -50,14 +60,7 @@ const ToggleableExpenseForm = () => {
                             />
                         </Col>
                         <Col sm={2} > 
-                            <Input 
-                                type='number' 
-                                name='vat'
-                                id='vat'
-                                placeholder='calculated vat'
-                                disabled
-                                required 
-                            />
+                            VAT: {vat} EUR
                         <hr />
                         </Col>
                     </Row>
