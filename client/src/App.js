@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import Dashboard from './components/expenses/dashboard';
+import NavBar from './components/includes/navbar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        ExpensIt
-      </header>
+      <NavBar />
+      <br />
       <Dashboard />
     </div>
   );
