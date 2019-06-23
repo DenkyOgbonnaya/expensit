@@ -6,7 +6,26 @@
 #newBtn {
     border-radius: 15px;
     background: #8bc34a;
+    float: right;
+    margin: 10px
 }
 #addBtn {
     margin: 20px;
+}
+.dashboard {
+    background: #fff;
+}
+@media (min-width: 1025px) and (max-width: 1280px){
+    .expenseList {
+        padding: 50px;
+        margin: 50px;
+        margin-top: 1;
+        border: 1px solid #ccc
+    }
+    .dashboard {
+        margin: 40px;
+    }
+}
+.thead {
+    color: #8bc34a
 }

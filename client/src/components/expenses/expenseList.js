@@ -1,18 +1,19 @@
 import React from 'react';
 import {Table} from 'reactstrap';
 import {calculateVat} from './helper';
+import './expenses.css';
 
 const ExpenseList = ({expenses}) => {
 
     return(
-        <div> 
-            <Table > 
+        <div className ='expenseList'> 
+            <Table responsive borderless > 
             <thead> 
                     <tr> 
-                        <th> Date </th>
-                        <th> Value </th>
-                        <th> VAT </th>
-                        <th> Reason </th>
+                        <th className='thead'> Date </th>
+                        <th className='thead'> Value </th>
+                        <th className='thead'> VAT </th>
+                        <th className='thead'> Reason </th>
                     </tr>
                 </thead>
                 <tbody> 

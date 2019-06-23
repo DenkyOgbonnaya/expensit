@@ -1,5 +1,11 @@
 .App {
     padding: 5px;
+    bottom: 0;
+}
+@media (min-width: 1025px) and (max-width: 1280px){
+    .App {
+        background: linear-gradient(to top, #8bc34a 40%, white 0%);
+    }
 }
 
 
