@@ -2,18 +2,18 @@
 module.exports = (sequelize, DataTypes) => {
   const Expense = sequelize.define('Expense', {
     value: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.DOUBLE,
       allowNull: false
     },
     date: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: false
     },
     vat: {
-      type: Sequelize.INTEGER
+      type: DataTypes.DOUBLE
     },
     reason: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false
     }
   }, {});
