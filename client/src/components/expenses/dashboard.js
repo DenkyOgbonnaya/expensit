@@ -4,18 +4,21 @@ import ExpenseList from './expenseList';
 import {getExpenses, addExpense} from './api';
 import {Alert} from 'reactstrap';
 import './expenses.css';
+import Spinnar from '../includes/spinner';
 
 const Dashboard = () => {
     const[expenses, setExpenses] = useState([]);
     const[message, setMessage] = useState('');
-    const[isVisible, setIsVisible] = useState(false)
+    const[isVisible, setIsVisible] = useState(false);
+    const[isLoading, setIsLoading] = useState(true);
 
     useEffect( () => {
         getExpenses()
         .then(data => {
-            if(data.status === 'success')
+            if(data.status === 'success'){
                 setExpenses(data.expenses);
-                setIsVisible(true);
+                setIsLoading(false);
+            }
         })
     }, [])
     const addNewExpense = expense => {
@@ -35,7 +38,7 @@ const Dashboard = () => {
             <ToggleableExpenseForm addNewExpense = {addNewExpense} />
             <hr />
             <h4> My Expenses </h4>
-            <ExpenseList expenses = {expenses} />
+            { isLoading ? <Spinnar /> : <ExpenseList expenses = {expenses} />}
         </div>
     )
 }
