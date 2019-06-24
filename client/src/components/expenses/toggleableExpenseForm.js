@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Button, Form, Input, Container, Row, Col} from 'reactstrap';
-import {calculateVat, formatInput} from './helper';
+import {calculateVat, formatInput, cleanInput} from './helper';
 import './expenses.css';
 
-const ToggleableExpenseForm = () => {
+const ToggleableExpenseForm = ({addNewExpense}) => {
     const[date, setDate] = useState('');
     const[value, setValue] = useState('');
     const[reason, setReason] = useState('');
@@ -13,6 +13,14 @@ const ToggleableExpenseForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        const expense = {
+            date,
+            value: cleanInput(value),
+            vat: cleanInput(vat),
+            reason
+        }
+        addNewExpense(expense);
     }
     const handleValueChange = e => {
         let value = e.target.value;
@@ -37,7 +45,7 @@ const ToggleableExpenseForm = () => {
         )
     return(
         <div>
-            <h3> New expense </h3>
+            <h4> New expense </h4>
             <Form onSubmit = {handleSubmit} >
                 
                     <Row> 

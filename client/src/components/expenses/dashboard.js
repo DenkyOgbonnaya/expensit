@@ -1,21 +1,38 @@
 import React, {useState, useEffect} from 'react';
 import ToggleableExpenseForm from './toggleableExpenseForm';
 import ExpenseList from './expenseList';
+import {getExpenses, addExpense} from './api';
+import {Alert} from 'reactstrap';
 import './expenses.css';
 
-const expenses = [
-    {_id: 'yuruf', date: '3rdjune', value:'2000', vat:'20 EUR', reason:'Bought a google plasma'},
-    {_id: 'uudjk', date: '7th aug', value:'5000', vat:'50 EUR', reason:'Gave judge for his tution'},
-    {_id: 'uudnj', date: '2nd sept', value:'200', vat:'10 EUR', reason:'Paid a call girl'},
-    {_id: 'yurueewwf', date: '3rdjune', value:'2000', vat:'20 EUR', reason:'Bought a google plasma'},
-    {_id: 'uudjddk', date: '7th aug', value:'5000', vat:'50 EUR', reason:'Gave judge for his tution'},
-    {_id: 'uudffnj', date: '2nd sept', value:'200', vat:'10 EUR', reason:'Paid a call girl'}
-]
 const Dashboard = () => {
+    const[expenses, setExpenses] = useState([]);
+    const[message, setMessage] = useState('');
+    const[isVisible, setIsVisible] = useState(false)
 
+    useEffect( () => {
+        getExpenses()
+        .then(data => {
+            if(data.status === 'success')
+                setExpenses(data.expenses);
+                setIsVisible(true);
+        })
+    }, [])
+    const addNewExpense = expense => {
+        addExpense(expense)
+        .then(data => {
+            if(data.status === 'success'){
+                setExpenses(expenses.concat(data.expense));
+                setMessage(data.message);
+                setIsVisible(true);
+            }else
+            alert(data.message)
+        })
+    }
     return(
         <div className='dashboard' >
-            <ToggleableExpenseForm />
+        <Alert color='success' isOpen={isVisible} toggle={() => setIsVisible(!isVisible) } > {message} </Alert>
+            <ToggleableExpenseForm addNewExpense = {addNewExpense} />
             <hr />
             <h4> My Expenses </h4>
             <ExpenseList expenses = {expenses} />

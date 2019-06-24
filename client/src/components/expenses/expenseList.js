@@ -4,7 +4,8 @@ import {calculateVat} from './helper';
 import './expenses.css';
 
 const ExpenseList = ({expenses}) => {
-
+    if(!expenses || expenses.length === 0)
+        return <div>You have no expenses, add new to start tracking! </div>
     return(
         <div className ='expenseList'> 
             <Table responsive borderless > 
@@ -19,8 +20,8 @@ const ExpenseList = ({expenses}) => {
                 <tbody> 
                     {
                         expenses.map(expense => 
-                            <tr key={expense._id} > 
-                                <td> {expense.date} </td>
+                            <tr key={expense.id} > 
+                                <td> {new Date(expense.date).toDateString()} </td>
                                 <td> {expense.value} </td>
                                 <td> {calculateVat(expense.value)} </td>
                                 <td> {expense.reason} </td>

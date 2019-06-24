@@ -5,7 +5,7 @@ module.exports = {
       const{value, date, vat, reason} = req.body;
 
       try{
-          const expense = await Expense.create({value, date, vat, reason});
+          const expense = await Expense.create({value, date: new Date(date), vat, reason});
           return res.status(201).send({status: 'success', message: 'Expense added successfully', expense});
 
       }catch(err){
