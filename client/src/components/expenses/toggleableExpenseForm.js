@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Form, Input, Container, Row, Col} from 'reactstrap';
-import {calculateVat, formatInput, cleanInput} from './helper';
+import {calculateVat, formatInput, formatCurrency, cleanInput} from './helper';
 import './expenses.css';
 
 const ToggleableExpenseForm = ({addNewExpense}) => {
@@ -16,22 +16,19 @@ const ToggleableExpenseForm = ({addNewExpense}) => {
 
         const expense = {
             date,
-            value: cleanInput(value),
-            vat: cleanInput(vat),
+            value: formatCurrency(cleanInput(value)),
+            vat: formatCurrency(cleanInput(vat)),
             reason
         }
         addNewExpense(expense);
     }
     const handleValueChange = e => {
         let value = e.target.value;
-
-        //format number 100000 to 100,000
-        let formatedValue = formatInput(value);
-        setValue(formatedValue);
+        setValue(value);
 
         //calc and format vat
-        let formatedVat = formatInput(calculateVat(value).toString());
-        setVat(formatedVat);
+        let cleanedValue = cleanInput(value)
+        setVat(formatInput(calculateVat(cleanedValue)));
 
     }
     if(!isOpen)
