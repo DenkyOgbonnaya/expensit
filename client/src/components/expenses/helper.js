@@ -24,5 +24,10 @@ const formatter = new Intl.NumberFormat(undefined, {
   });
   return formatter.format(Number(value));
 }
+export const truncateReason = reason => {
+    const MAX_LENGTH = 50;
+    //truncates the string if legnth is grater than MAX_LENGTH
+    return reason.length > MAX_LENGTH ? `${reason.substring(0, MAX_LENGTH)}...` : reason
+}
 
   

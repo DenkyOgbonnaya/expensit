@@ -44,7 +44,7 @@ const Dashboard = () => {
         }
         if(pages > 1)
         return (
-            <Pagination>
+            <Pagination style = {{margin: '10px'}}>
                 <PaginationItem disabled = {currentPage === 1 ? true : false }> 
                     <PaginationLink previous onClick = { () => handlePageChange(currentPage -1)} />
                 </PaginationItem>
@@ -76,6 +76,7 @@ const Dashboard = () => {
             <h4> My Expenses </h4>
             { isLoading ? <Spinnar /> : <ExpenseList expenses = {expenses} />}
             {displayPageNums()}
+            <br />
         </div>
     )
 }

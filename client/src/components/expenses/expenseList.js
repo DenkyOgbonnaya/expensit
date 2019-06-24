@@ -1,6 +1,6 @@
 import React from 'react';
 import {Table} from 'reactstrap';
-import {calculateVat} from './helper';
+import {truncateReason} from './helper';
 import './expenses.css';
 
 const ExpenseList = ({expenses}) => {
@@ -24,7 +24,7 @@ const ExpenseList = ({expenses}) => {
                                 <td> {new Date(expense.date).toDateString()} </td>
                                 <td> {expense.value} </td>
                                 <td> {expense.vat} </td>
-                                <td> {expense.reason} </td>
+                                <td> {truncateReason(expense.reason)} </td>
                             </tr>
                         )
                     }
