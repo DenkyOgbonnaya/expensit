@@ -23,7 +23,7 @@ const ExpenseList = ({expenses}) => {
                             <tr key={expense.id} > 
                                 <td> {new Date(expense.date).toDateString()} </td>
                                 <td> {expense.value} </td>
-                                <td> {calculateVat(expense.value)} </td>
+                                <td> {expense.vat} </td>
                                 <td> {expense.reason} </td>
                             </tr>
                         )

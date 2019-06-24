@@ -37,7 +37,7 @@ const ToggleableExpenseForm = ({addNewExpense}) => {
                 size='sm'
                 id='newBtn'
                 onClick = {() => setIsOpen(true)} > 
-                <img src={require('./add_ic20.png')} alt='add icon'/> Add New 
+                <img src='/icons/add_ic20.png' alt='add icon'/> Add New 
             </Button>
         )
     return(
