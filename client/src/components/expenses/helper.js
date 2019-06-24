@@ -1,6 +1,5 @@
 //calculates VAT amount
-export const calculateVat = (value) => {
-    const vatRate = 20; // 20%
+export const calculateVat = (value, vatRate = 20) => {
     const newValue = value.toString().replace(/[^0-9.]/g, '') // replace all none digits and commmas with ''
 
     const vat = Number(newValue) * (vatRate/100);
@@ -24,10 +23,9 @@ const formatter = new Intl.NumberFormat(undefined, {
   });
   return formatter.format(Number(value));
 }
-export const truncateReason = reason => {
-    const MAX_LENGTH = 50;
+export const truncateReason = (string, max_length = 50) => {
     //truncates the string if legnth is grater than MAX_LENGTH
-    return reason.length > MAX_LENGTH ? `${reason.substring(0, MAX_LENGTH)}...` : reason
+    return string.length > max_length ? `${string.substring(0, max_length)}...` : string
 }
 
   
