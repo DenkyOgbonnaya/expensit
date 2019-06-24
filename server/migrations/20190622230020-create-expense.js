@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       value: {
-        type: Sequelize.DOUBLE,
+        type: Sequelize.STRING,
         allowNull: false
       },
       date: {
@@ -17,7 +17,7 @@ module.exports = {
         allowNull: false
       },
       vat: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.STRING
       },
       reason: {
         type: Sequelize.TEXT,

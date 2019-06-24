@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Expense = sequelize.define('Expense', {
     value: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.STRING,
       allowNull: false
     },
     date: {
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     vat: {
-      type: DataTypes.DOUBLE
+      type: DataTypes.STRING
     },
     reason: {
       type: DataTypes.TEXT,
