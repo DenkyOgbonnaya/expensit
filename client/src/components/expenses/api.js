@@ -9,8 +9,8 @@ export const addExpense = expense => {
           console.log(err)
       });
 }
-export const getExpenses = () => {
-    return Axios.get('/api/expenses')
+export const getExpenses = pageNum => {
+    return Axios.get(`/api/expenses?page=${pageNum}`)
     .then(response => {
         return response.data;
     })

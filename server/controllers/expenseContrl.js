@@ -14,11 +14,34 @@ module.exports = {
       }
     },
     async getAllExpense(req, res) {
-        try {
-          const expenses =  await Expense.findAll({order: [['date','DESC']]});
-          return res.status(200).send({status: 'success', expenses});
+      const pageNum = Number(req.query.page) || 1;
+      let offset = 0;
+      let page;
+      const limit = 10;
+      if(pageNum === 0){
+        offset = 0;
+      }else if (pageNum > 0){
+        page = pageNum;
+        offset = (page - 1) * limit;
+      }else offset = 0;
 
-        } catch (err) {
+      try {
+        const expenses =  await Expense.findAndCountAll({
+          order: [['date','DESC']],
+          limit,
+          offset
+        });
+        if(expenses.count < 1)
+          return res.status(404).send({message: 'There is no expenses'})
+          
+        return res.status(200).send({
+          status: 'success', 
+          expenses: expenses.rows,
+          page: pageNum,
+          pages: Math.ceil(expenses.count/limit)
+        });
+
+      } catch (err) {
             console.log(err)
             res.status(400).send(err)
         }
