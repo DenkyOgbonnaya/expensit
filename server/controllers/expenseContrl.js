@@ -15,7 +15,7 @@ module.exports = {
     },
     async getAllExpense(req, res) {
         try {
-          const expenses =  await Expense.findAll();
+          const expenses =  await Expense.findAll({order: [['date','DESC']]});
           return res.status(200).send({status: 'success', expenses});
 
         } catch (err) {
