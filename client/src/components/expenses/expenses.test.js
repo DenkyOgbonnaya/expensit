@@ -1,9 +1,29 @@
 import React from 'react';
+import {shallow} from 'enzyme';
+import Dashboard from './dashboard';
 import {cleanInput, calculateVat, truncateReason, formatCurrency, formatInput
 } from './helper';
+import ToggleableExpenseForm from './toggleableExpenseForm';
+import ExpenseList from './expenseList';
 
 describe('expenses', () => {
-    describe('helper, helper functions', () => {
+    describe('Dashboard', () => {
+        it('renders without crashing', () => {
+            shallow(<Dashboard />);
+        })
+    })
+    describe('ToggleabelExpenseForm', () => {
+        it('renders without crashing', () => {
+            shallow(<ToggleableExpenseForm />);
+        })
+    })
+    describe('ExpenseList', () => {
+        it('renders without crashing', () => {
+            shallow(<ExpenseList />);
+        })
+    })
+
+    describe('helper', () => {
         describe('truncateReason(), truncates a string', () => {
             const string = 'test string to truncate';
 
