@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/client/public'));
 app.use('/api', expenseRouter)
 
 app.get('*', (req, res) => res.status(200).send({
-    message: 'Welcome to the beginning of fullness.',
+    message: 'Welcome to Expensit.',
   }));
 
   

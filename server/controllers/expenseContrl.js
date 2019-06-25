@@ -9,7 +9,6 @@ module.exports = {
           return res.status(201).send({status: 'success', message: 'Expense added successfully', expense});
 
       }catch(err){
-          console.log(err)
         res.status(400).send(err)
       }
     },
@@ -42,7 +41,6 @@ module.exports = {
         });
 
       } catch (err) {
-            console.log(err)
             res.status(400).send(err)
         }
       }

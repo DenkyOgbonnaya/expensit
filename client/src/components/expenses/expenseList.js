@@ -8,7 +8,7 @@ const ExpenseList = ({expenses}) => {
         return <div>You have no expenses, add new to start tracking! </div>
     return(
         <div className ='expenseList'> 
-            <Table responsive borderless > 
+            <Table responsive > 
             <thead> 
                     <tr> 
                         <th className='thead'> Date </th>

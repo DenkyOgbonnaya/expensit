@@ -26,6 +26,8 @@ const Dashboard = () => {
         })
     }, [])
     const addNewExpense = expense => {
+        setExpenses(expenses.concat(expense));
+        
         addExpense(expense)
         .then(data => {
             if(data.status === 'success'){

@@ -16,7 +16,6 @@ export const formatInput = value => {
     return formatedValue;
 }
 export const formatCurrency = value => { 
-    console.log(value)       
 const formatter = new Intl.NumberFormat(undefined, {
     style: 'currency',
     currency: 'EUR',
