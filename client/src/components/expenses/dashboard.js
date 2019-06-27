@@ -17,7 +17,7 @@ const Dashboard = () => {
     useEffect( () => {
         getExpenses(1)
         .then(data => {
-            if(data.status === 'success'){
+            if(data && data.status === 'success'){
                 setExpenses(data.expenses);
                 setIsLoading(false);
                 setCurrentPage(data.page);
@@ -30,12 +30,12 @@ const Dashboard = () => {
         
         addExpense(expense)
         .then(data => {
-            if(data.status === 'success'){
+            if(data && data.status === 'success'){
                 setExpenses(expenses.concat(data.expense));
                 setMessage(data.message);
                 setIsVisible(true);
             }else
-            alert(data.message)
+            alert('error: could not add expense')
         })
     }
     const displayPageNums = () => {

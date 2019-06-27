@@ -3,6 +3,7 @@ const cors = require('cors');
 const db = require('./server/models/index')
 const expenseRouter =  require('./server/routes/expenseRoute');
 const path = require ('path');
+const connectDb = require('./server/elephantsql')
 
 const app = express();
 const PORT = process.env.PORT || 8080; //listing port
@@ -24,7 +25,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/client/public/build/index.html'));
 })
 
-  
+  connectDb();
     app.listen(PORT, (err) =>{
         if(err) throw err ;
             console.log(`Expensit listening on port ${PORT}`);
