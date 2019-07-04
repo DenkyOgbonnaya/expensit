@@ -1,5 +1,6 @@
 {
   "name": "expensit",
+  "homepage":"https://xpensit.herokuapp.com/",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
